@@ -4,12 +4,11 @@
  * Version 1.0.0
  */
 /*
-Plugin name: Voyage
-Plugin uri: https://github.com/eddytuto
+Plugin name: pays
 Version: 1.0.0
-Description: Permet d'afficher les destinations qui répondent à certains critères
+Description: Permet d'afficher les pays qui répondent à certains critères
 */
-function eddym_enqueue()
+function janne_enqueue()
 {
 // filemtime // retourne en milliseconde le temps de la dernière modification
 // plugin_dir_path // retourne le chemin du répertoire du plugin
@@ -19,25 +18,25 @@ function eddym_enqueue()
 // wp_enqueue_scripts // le hook
 
 $version_css = filemtime(plugin_dir_path( __FILE__ ) . "style.css");
-$version_js = filemtime(plugin_dir_path(__FILE__) . "js/voyage.js");
-wp_enqueue_style(   'em_plugin_voyage_css',
+$version_js = filemtime(plugin_dir_path(__FILE__) . "js/pays.js");
+wp_enqueue_style(   'em_plugin_pays_css',
                      plugin_dir_url(__FILE__) . "style.css",
                      array(),
                      $version_css);
 
-wp_enqueue_script(  'em_plugin_voyage_js',
-                    plugin_dir_url(__FILE__) ."js/voyage.js",
+wp_enqueue_script(  'em_plugin_pays_js',
+                    plugin_dir_url(__FILE__) ."js/pays.js",
                     array(),
                     $version_js,
                     true);
 }
-add_action('wp_enqueue_scripts', 'eddym_enqueue');
+add_action('wp_enqueue_scripts', 'janne_enqueue');
 /* Création de la liste des destinations en HTML */
 
 
 
 function creationBouton(){
-      // Récupérer toutes les catégories
+      // Récupérer toutes les pays
       $categories = get_categories();
 
         $contenu = '';
