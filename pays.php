@@ -35,17 +35,19 @@ add_action('wp_enqueue_scripts', 'janne_enqueue');
 
 
 
-function creationBouton(){
+function creationBoutonPays(){
       // Récupérer toutes les pays
       $categories = get_categories();
 
         $contenu = '';
-      // Parcourir chaque catégorie
+        
+      // Parcourir chaque pays
       foreach ($categories as $category) {
-          // Récupérer les informations de la catégorie
+
+          // Récupérer les informations du pays
           $cat_name = $category->name;
          $id = $category->term_id;
-         $contenu .= '<button id="cat_'.$id.'" class="lien__categorie">'.$cat_name.'</button>';
+         $contenu .= '<button id="cat_'.$id.'" class="lien__pays">'.$cat_name.'</button>';
       }
 
       // Retourner le contenu de bouton et les destinations
@@ -54,17 +56,17 @@ function creationBouton(){
 
 
 
-function creation_destinations(){
+function creation_description(){
 
 
     //Nouveau variable pour le contenu
     // contient la fonction pour creation des les boutons  et la div pour les destinations
-    $contenu = creationBouton(). '<div class="contenu__restapi"></div>';
+    $contenu = creationBoutonPays(). '<div class="contenu__restapi__pays"></div>';
 
     //retourne le contenu de bouton et les destinations
     return $contenu;
 }
 // Ajouter SHORTCODE [em_destination] pour afficher les destinations
-// C'EST EN EFFET UN HOOK ! POUR appeller la fonction creation_destinations
-add_shortcode('em_destination', 'creation_destinations');
+// C'EST EN EFFET UN HOOK ! POUR appeller la fonction creation_description
+add_shortcode('em_pays', 'creation_description');
 ?>
